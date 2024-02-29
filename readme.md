@@ -1,7 +1,7 @@
 # Search engine
-A project created during the training process for testing.
+A project created during the c++ course for training.
 
-Performs a custom search on json documents and saves the result to a file.
+Performs search on json documents and saves the result as a file.
 
 # Compiling
 You need: 
@@ -14,25 +14,32 @@ You need:
 
 `$ cd Search_engine`
 
-`$ mkdir build/ && cd build/`
+`$ mkdir build && cd build`
 
-`cmake .. -G "MinGW Makefiles"`
+`cmake ..` or if u use MinGW compiler use `cmake .. -G "MinGW Makefiles"`
 
 `cmake --build .`
 
-# How to work
-1. `$ cd Search_engine && cd resourses && config.json`
+# Running
+1. `$ cd Search_engine\resourses && config.json`
 1. Change field `"max_responses":`.
 2. Place your files names after `"files": [`
 4. Add your requests in request.json.
 5. Place files at folder ***files for search***
-***NOTE:*** Requests and file contents must be words of lowercase Latin letters separated by a space.
-6. Start the programm. ~~U can just open search_engine file.~~
    
-    `$ cd Search_engine && cd build && cd src`
+    ***NOTE:*** Requests and file contents must be words of lowercase Latin letters separated by a space.
 
-    `$  search_engine`
-7. The results will be in the answer.json file (resources folder).
+6. Start the programm. 
+   
+    `$ cd Search_engine\build\src && search_engine`
+
+   ***NOTE:*** If u use Visual Studio file search_engine.exe can be at Search_engine\build\src\debug.
+               Is this case change RESOURSES_PATH and FILES_PATH variables at file *Converter_JSON.h*
+               then compile project again.
+   
+8. The results will be in the answer.json file (resources folder).
+
+
 
 # Screenshots of the files
 
