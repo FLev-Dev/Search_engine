@@ -29,7 +29,9 @@ std::vector<std::string> Converter_JSON::get_text_documents() {
 	json file_list = take_data_from_file("config.json");
 
 	for(auto& it : file_list["files"]){
-		std::ifstream file(FILES_PATH + it);
+		//json throws an error when concatenating strings, so we'll make it a string first
+		std::string config_path = it;
+		std::ifstream file(FILES_PATH + config_path);
 		if (!file) {
 			std::cerr << "File \"" << it << "\" not found!" << std::endl;
 			continue;
@@ -63,7 +65,7 @@ std::vector<std::string> Converter_JSON::get_requests(){
 	return requests;
 }
 
-void Converter_JSON::put_answers(std::vector<std::vector<std::pair<size_t, float>>> answers) {
+void Converter_JSON::put_answers(std::vector<std::vector<std::pair<size_t, float>>>& answers) {
 	int limit = get_responses_limit();
 	std::string file_name = RESOURSES_PATH;
 	std::ofstream file(file_name + "answers.json");
@@ -85,7 +87,8 @@ void Converter_JSON::put_answers(std::vector<std::vector<std::pair<size_t, float
 		jfile["answers"][request_num]["result"] = true;
 		if (answers[i].size() == 1) {
 			std::string docid_name = "docid_" + std::to_string(answers[i][0].first);
-			jfile["answers"][request_num][docid_name] = { {"rank", answers[i][0].second} };
+			float rounded = round(answers[i][0].second * 100) / 100;
+			jfile["answers"][request_num][docid_name] = { {"rank", rounded} };
 			continue;
 		}
 		nlohmann::ordered_json jfile_temp;
@@ -93,21 +96,11 @@ void Converter_JSON::put_answers(std::vector<std::vector<std::pair<size_t, float
 		for (int j = 0; j < answers[i].size(); j++) {
 			if (j >= limit) break;
 			std::string docid_name = "docid_" + std::to_string(answers[i][j].first);
-			jfile["answers"][request_num]["relevance"][docid_name] = { {"rank", answers[i][j].second} };
+			float rounded = round(answers[i][j].second * 100) / 100;
+			jfile["answers"][request_num]["relevance"][docid_name] = { {"rank", rounded} };
 		};
 		
 	}
 	file << jfile;
 	file.close();
-}
-
-void Converter_JSON::test() {
-	nlohmann::ordered_json jfile_temp;
-	jfile_temp["answers"]["result"] = true;
-	float val = 2.3934833;
-	val = round(val * 100) / 100;
-	std::cout << val << '\n';
-	jfile_temp["answers"]["relevance"]["docid_1"] = { {"rank", val} };
-	
-	std::cout << jfile_temp;
 }

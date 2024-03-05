@@ -43,8 +43,5 @@ public:
 	/*
 	*	Adds an answer to the file.json search results
 	*/
-	void put_answers(std::vector<std::vector<std::pair<size_t, float>>> answers);
-
-
-	void test();
+	void put_answers(std::vector<std::vector<std::pair<size_t, float>>>& answers);
 };

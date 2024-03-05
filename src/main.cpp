@@ -23,8 +23,7 @@ int main()
 
 	auto search_result = search.search(requests);
 	auto converted_result = conv_vec(search_result);
-	converter.test();
-	//converter.put_answers(converted_result);
+	converter.put_answers(converted_result);
 	return 0;
 }
 
