@@ -1,7 +1,6 @@
 #include "Converter_JSON.h"
 
 #include <fstream>
-#include <set>
 #include <string>
 
 json Converter_JSON::take_data_from_file(std::string file_name)
