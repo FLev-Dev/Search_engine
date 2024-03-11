@@ -25,7 +25,8 @@ You need:
 1. Change field `"max_responses":`.
 2. Place your files names after `"files": [`
 4. Add your requests in request.json.
-5. Place files at folder ***files for search***
+5. `$ mkdir "files for search" && cd "files for search"`
+   Place files at folder ***files for search***
    
     ***NOTE:*** Requests and file contents must be words of lowercase Latin letters separated by a space.
 
@@ -37,7 +38,7 @@ You need:
                Is this case change RESOURSES_PATH and FILES_PATH variables at file *Converter_JSON.h*
                then compile project again.
    
-8. The results will be in the answer.json file (resources folder).
+7. The results will be in the answer.json file (resources folder).
 
 
 
