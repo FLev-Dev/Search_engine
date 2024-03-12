@@ -8,7 +8,7 @@ You need:
 * C++17 compliant compiler
 * CMake build system
 
-
+ ***NOTE:*** If you are using Linux, you need to change the RESOURCES_PATH and FILES_PATH variables in Converter_JSON.h. You should also use alternative terminal commands.
   
 `$ git clone https://github.com/FLev-Dev/Search_engine`
 
