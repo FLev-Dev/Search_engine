@@ -4,8 +4,7 @@
 #include <algorithm>
 
 
-void Search_server::merge_sort(std::vector<std::string>& list, int start, int end)
-{
+void Search_server::merge_sort(std::vector<std::string>& list, int start, int end){
 	int mid;
 	if (start < end) {
 
@@ -16,8 +15,7 @@ void Search_server::merge_sort(std::vector<std::string>& list, int start, int en
 	}
 }
 
-void Search_server::merge(std::vector<std::string>& list, int start, int end, int mid)
-{
+void Search_server::merge(std::vector<std::string>& list, int start, int end, int mid){
 	
 	int i, j, k;
 	i = start;
@@ -57,8 +55,7 @@ void Search_server::merge(std::vector<std::string>& list, int start, int end, in
 		list[i] = mergedList[i];
 }
 
-void Search_server::merge_sort(std::vector<Relative_index>& list, int start, int end)
-{
+void Search_server::merge_sort(std::vector<Relative_index>& list, int start, int end){
 	int mid;
 	if (start < end) {
 
@@ -69,7 +66,7 @@ void Search_server::merge_sort(std::vector<Relative_index>& list, int start, int
 	}
 }
 
-void Search_server::merge(std::vector<Relative_index>& list, int start, int end, int mid) {
+void Search_server::merge(std::vector<Relative_index>& list, int start, int end, int mid){
 	int i, j, k;
 	i = start;
 	k = start;
@@ -108,8 +105,7 @@ void Search_server::merge(std::vector<Relative_index>& list, int start, int end,
 		list[i] = mergedList[i];
 }
 
-std::map<size_t, int> Search_server::find_frequency(const std::vector<std::string>& words)
-{
+std::map<size_t, int> Search_server::find_frequency(const std::vector<std::string>& words){
 	std::map<size_t, int> frequency; 	
 	for (int i = 0; i < words.size(); i++) {
 		auto word_count = _index.get_word_count(words[i]);
@@ -121,7 +117,7 @@ std::map<size_t, int> Search_server::find_frequency(const std::vector<std::strin
 	return frequency;
 }
 
-std::vector<Relative_index> Search_server::search_one_req(const std::vector<std::string>& request){
+std::vector<Relative_index> Search_server::search_one_req(const std::vector<std::string>& request) {
 	auto word_count = _index.get_word_count(*request.begin());
 	if (word_count.begin() == word_count.end()) return {};
 
@@ -141,7 +137,7 @@ std::vector<Relative_index> Search_server::search_one_req(const std::vector<std:
 
 
 std::vector<std::vector<Relative_index>> Search_server::search(
-										const std::vector<std::string>& queries_input){
+										const std::vector<std::string>& queries_input) {
 
 	std::vector<std::vector<std::string>> unic_words;
 	int i = 0;

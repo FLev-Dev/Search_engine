@@ -3,8 +3,7 @@
 #include <fstream>
 #include <string>
 
-json Converter_JSON::take_data_from_file(std::string file_name)
-{
+json Converter_JSON::take_data_from_file(std::string file_name) const {
 	json j_file;
 	std::ifstream file(RESOURSES_PATH + file_name);
 	if (!file) {
@@ -22,7 +21,7 @@ json Converter_JSON::take_data_from_file(std::string file_name)
 	return j_file;
 }
 
-std::vector<std::string> Converter_JSON::get_text_documents() {
+std::vector<std::string> Converter_JSON::get_text_documents() const {
 	std::vector<std::string> documents;
 
 	json file_list = take_data_from_file("config.json");
@@ -43,7 +42,7 @@ std::vector<std::string> Converter_JSON::get_text_documents() {
 	return documents;
 }
 
-int Converter_JSON::get_responses_limit(){
+int Converter_JSON::get_responses_limit() const {
 	int limit = 0;
 
 	json j_file = take_data_from_file("config.json");
@@ -55,7 +54,7 @@ int Converter_JSON::get_responses_limit(){
 	return limit;
 }
 
-std::vector<std::string> Converter_JSON::get_requests(){
+std::vector<std::string> Converter_JSON::get_requests() const {
 	std::vector<std::string> requests;
 	json j_file = take_data_from_file("requests.json");
 	for (auto& it : j_file["requests"]) {
@@ -64,7 +63,7 @@ std::vector<std::string> Converter_JSON::get_requests(){
 	return requests;
 }
 
-void Converter_JSON::put_answers(std::vector<std::vector<std::pair<size_t, float>>>& answers) {
+void Converter_JSON::put_answers(std::vector<std::vector<std::pair<size_t, float>>>& answers) const {
 	int limit = get_responses_limit();
 	std::string file_name = RESOURSES_PATH;
 	std::ofstream file(file_name + "answers.json");

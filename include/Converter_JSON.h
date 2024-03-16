@@ -7,8 +7,6 @@
 constexpr auto RESOURSES_PATH = "..\\..\\resourses\\";
 constexpr auto FILES_PATH = "..\\..\\resourses\\files for search\\";
 
-
-
 using json = nlohmann::json;
 
 
@@ -17,7 +15,7 @@ private:
 	/*
 	*	@return json from the file_name
 	*/
-	json take_data_from_file(std::string file_name);
+	json take_data_from_file(std::string file_name) const;
 
 public:
 	Converter_JSON() = default;
@@ -25,23 +23,23 @@ public:
 	*	@return a list with the contents
 	*	 of the files listed in CONFIG_FILE
 	*/
-	std::vector<std::string> get_text_documents();
+	std::vector<std::string> get_text_documents() const;
 
 	/*
 	*	Reads the max_responses field to determine the
 	*	 maximum number of responses per request
 	*	@return maximum number of responses per request from
 	*/
-	int get_responses_limit();
+	int get_responses_limit() const;
 
 	/*
 	*	@return a list with the contents
 	*	 of the files listed in CONFIG_FILE
 	*/
-	std::vector<std::string> get_requests();
+	std::vector<std::string> get_requests() const;
 
 	/*
 	*	Adds an answer to the file.json search results
 	*/
-	void put_answers(std::vector<std::vector<std::pair<size_t, float>>>& answers);
+	void put_answers(std::vector<std::vector<std::pair<size_t, float>>>& answers) const;
 };

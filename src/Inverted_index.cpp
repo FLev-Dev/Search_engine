@@ -4,7 +4,7 @@
 
 std::mutex freq_dictionary_M;
 
-void Inverted_index::update_document_base(std::vector<std::string> input_docs){
+void Inverted_index::update_document_base(std::vector<std::string> input_docs) {
 	docs = input_docs;
 	std::vector<std::thread> threads;
 	int i = 0;
@@ -46,6 +46,6 @@ void Inverted_index::string_indexing(std::string doc, int doc_id) {
 	}
 }
 
-std::vector<Entry> Inverted_index::get_word_count(const std::string& word){
+std::vector<Entry> Inverted_index::get_word_count(const std::string& word) {
 	return freq_dictionary[word];
 }
