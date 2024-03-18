@@ -87,7 +87,7 @@ TEST(TestCaseSearchServer, TestSimple) {
 	ASSERT_EQ(result, expected);
 }
 
-TEST(TestCaseSearchServer, TestTop5) {
+TEST(TestCaseSearchServer, TestTop3) {
 	const vector<string> docs = {
 									"london is the capital of great britain",
 									"paris is the capital of france",
@@ -117,7 +117,26 @@ TEST(TestCaseSearchServer, TestTop5) {
 																{14, 1},
 																{0, 0.666666687},
 																{1, 0.666666687},
-																{2, 0.666666687}
+																{2, 0.666666687},
+																{3, 0.666666687},
+																{4, 0.666666687},
+																{5, 0.666666687},
+																{6, 0.666666687},
+																{7, 0.666666687},
+																{8, 0.666666687},
+																{9, 0.666666687},
+																{10, 0.666666687},
+																{11, 0.666666687},
+																{12, 0.666666687},
+																{13, 0.666666687},
+																{14, 0.666666687},
+																{15, 0.666666687},
+																{16, 0.666666687},
+																{17, 0.666666687},
+																{18, 0.666666687},
+																{19, 0.666666687},
+																{20, 0.666666687},
+																{21, 0.666666687}
 															}};
 	Inverted_index idx;
 	idx.update_document_base(docs);
