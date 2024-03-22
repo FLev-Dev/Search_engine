@@ -27,7 +27,8 @@ std::vector<std::string> Converter_JSON::get_text_documents() const {
 	json file_list = take_data_from_file("config.json");
 
 	for(auto& it : file_list["files"]){
-		//json throws an error when concatenating strings, so we'll make it a string first
+		//JSON throws an error when concatenating strings. 
+		// Therefore, we will convert it to a string first.
 		std::string config_path = it;
 		std::ifstream file(FILES_PATH + config_path);
 		if (!file) {
